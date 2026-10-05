@@ -55,7 +55,56 @@
 
 
 
+            List<Employee> employees = new List<Employee>()
+            {
+                new Employee("John", "Indigo", 5000),
+                new Employee("Anne", "Green", 7000),
+                new Employee("James", "Indigo", 4000),
+                new Employee("Alice", "Brown", 6000),
+                new Employee("Matt", "Indigo", 4500),
+                new Employee("Lucy", "Green", 3000)
+            };
 
+            foreach (var e in employees)
+                Console.WriteLine(e);
+            Console.WriteLine("\n\n");
+
+
+            var between4k6k = from emp in employees
+                              where emp.Salary >= 4000 && emp.Salary <= 6000
+                              select emp;
+
+            foreach (var e in between4k6k)
+                Console.WriteLine(e);
+            Console.WriteLine("\n\n");
+
+
+
+            var sortedEmp = from e in employees
+                            orderby e.LastName, e.FirstName
+                            select e;
+
+            foreach (var e in sortedEmp)
+                Console.WriteLine(e);
+            Console.WriteLine("\n\n");
+
+
+
+            var lastnames = from e in employees
+                            select e.LastName;
+
+            foreach (var e in lastnames.Distinct())
+                Console.WriteLine(e);
+            Console.WriteLine("\n\n");
+
+
+
+            var empNames = from e in employees
+                           select new { e.FirstName, e.LastName };
+
+            foreach (var e in empNames)
+                Console.WriteLine(e);
+            Console.WriteLine("\n\n");
         }
     }
 }
